@@ -7,7 +7,8 @@ import com.reshu.apiforge.entity.Project;
 import com.reshu.apiforge.repository.ApiEndpointRepository;
 import org.springframework.stereotype.Service;
 import com.reshu.apiforge.exception.ResourceNotFoundException;
-
+import com.reshu.apiforge.repository.ApiExecutionRepository;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
@@ -15,13 +16,16 @@ public class ApiEndpointService {
 
     private final ApiEndpointRepository endpointRepository;
     private final ProjectService projectService;
+    private final ApiExecutionRepository executionRepository;
 
     public ApiEndpointService(
             ApiEndpointRepository endpointRepository,
-            ProjectService projectService) {
+            ProjectService projectService,
+            ApiExecutionRepository executionRepository) {
 
         this.endpointRepository = endpointRepository;
         this.projectService = projectService;
+        this.executionRepository = executionRepository;
     }
 
     public EndpointResponse create(
@@ -77,6 +81,7 @@ public class ApiEndpointService {
         return toResponse(endpointRepository.save(endpoint));
     }
 
+    @Transactional
     public void delete(
             Long projectId,
             Long endpointId,
@@ -90,7 +95,23 @@ public class ApiEndpointService {
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Endpoint not found"));
 
+        executionRepository.deleteByEndpoint(endpoint);
+
         endpointRepository.delete(endpoint);
+    }
+
+    public ApiEndpoint getOwnedEndpoint(
+            Long projectId,
+            Long endpointId,
+            String email) {
+
+        Project project =
+                projectService.getOwnedProject(projectId, email);
+
+        return endpointRepository
+                .findByIdAndProject(endpointId, project)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Endpoint not found"));
     }
 
     private EndpointResponse toResponse(ApiEndpoint endpoint) {

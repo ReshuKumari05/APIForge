@@ -8,6 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import com.reshu.apiforge.dto.ExecuteResponse;
+import com.reshu.apiforge.service.ApiExecutionService;
+import com.reshu.apiforge.dto.ExecutionHistoryResponse;
+import com.reshu.apiforge.service.ExecutionHistoryService;
 
 import java.util.List;
 
@@ -16,9 +20,18 @@ import java.util.List;
 public class ApiEndpointController {
 
     private final ApiEndpointService endpointService;
+    private final ApiExecutionService executionService;
+    private final ExecutionHistoryService historyService;
 
-    public ApiEndpointController(ApiEndpointService endpointService) {
+    public ApiEndpointController(
+            ApiEndpointService endpointService,
+            ApiExecutionService executionService,
+            ExecutionHistoryService historyService) {
+
         this.endpointService = endpointService;
+        this.executionService = executionService;
+        this.historyService = historyService;
+
     }
 
     @PostMapping
@@ -78,6 +91,35 @@ public class ApiEndpointController {
         return ResponseEntity.ok(
                 endpointService.getAll(
                         projectId,
+                        authentication.getName()
+                )
+        );
+    }
+    @PostMapping("/{endpointId}/execute")
+    public ResponseEntity<ExecuteResponse> execute(
+            @PathVariable Long projectId,
+            @PathVariable Long endpointId,
+            Authentication authentication) {
+
+        return ResponseEntity.ok(
+                executionService.execute(
+                        projectId,
+                        endpointId,
+                        authentication.getName()
+                )
+        );
+    }
+
+    @GetMapping("/{endpointId}/history")
+    public ResponseEntity<List<ExecutionHistoryResponse>> history(
+            @PathVariable Long projectId,
+            @PathVariable Long endpointId,
+            Authentication authentication) {
+
+        return ResponseEntity.ok(
+                historyService.getEndpointHistory(
+                        projectId,
+                        endpointId,
                         authentication.getName()
                 )
         );

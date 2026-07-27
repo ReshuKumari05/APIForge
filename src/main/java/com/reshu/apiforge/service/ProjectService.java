@@ -8,9 +8,13 @@ import com.reshu.apiforge.entity.Project;
 import com.reshu.apiforge.entity.User;
 import com.reshu.apiforge.repository.ProjectRepository;
 import org.springframework.stereotype.Service;
-import com.reshu.apiforge.entity.Project;
-import java.util.List;
+
+
 import com.reshu.apiforge.exception.ResourceNotFoundException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+
 @Service
 public class ProjectService {
 
@@ -53,15 +57,18 @@ public class ProjectService {
         return toResponse(saved);
     }
 
-    public List<ProjectResponse> getAll(String email) {
+    public Page<ProjectResponse> getAll(
+            String email,
+            int page,
+            int size) {
 
         User user = userService.findByEmail(email);
 
+        Pageable pageable = PageRequest.of(page, size);
+
         return projectRepository
-                .findByOwner(user)
-                .stream()
-                .map(this::toResponse)
-                .toList();
+                .findByOwner(user, pageable)
+                .map(this::toResponse);
     }
 
     public ProjectResponse getById(
@@ -107,6 +114,25 @@ public class ProjectService {
                         new ResourceNotFoundException("Project not found"));
 
         projectRepository.delete(project);
+    }
+
+    public Page<ProjectResponse> search(
+            String email,
+            String keyword,
+            int page,
+            int size) {
+
+        User user = userService.findByEmail(email);
+
+        Pageable pageable = PageRequest.of(page, size);
+
+        return projectRepository
+                .findByOwnerAndNameContainingIgnoreCase(
+                        user,
+                        keyword,
+                        pageable
+                )
+                .map(this::toResponse);
     }
 
     private ProjectResponse toResponse(Project project) {
