@@ -2,22 +2,27 @@
 
 # 🚀 APIForge
 
-### Enterprise-Ready REST API Management Platform
+### Secure REST API Management Platform
 
-Secure, scalable, and production-ready backend platform for building, managing, documenting, and testing REST APIs with JWT Authentication, Role-Based Authorization, Docker, and Swagger.
+Build, Secure, Manage and Analyze REST APIs with JWT Authentication, Spring Security, Swagger, Docker, and Project Analytics.
 
 <p>
 
 <img src="https://img.shields.io/badge/Java-21-orange?style=for-the-badge"/>
+
 <img src="https://img.shields.io/badge/Spring_Boot-3.5.4-6DB33F?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/Spring_Security-6-6DB33F?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/MySQL-8-4479A1?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/JWT-Authentication-red?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge"/>
+
+<img src="https://img.shields.io/badge/Spring_Security-JWT-success?style=for-the-badge"/>
+
+<img src="https://img.shields.io/badge/MySQL-Database-blue?style=for-the-badge"/>
+
+<img src="https://img.shields.io/badge/Docker-Containerized-2496ED?style=for-the-badge"/>
+
+<img src="https://img.shields.io/badge/Swagger-OpenAPI-85EA2D?style=for-the-badge"/>
 
 </p>
 
-*A production-ready backend platform built using Spring Boot following modern software engineering principles.*
+*A production-oriented backend platform for securely managing, documenting, executing, and analyzing REST APIs.*
 
 </div>
 
@@ -25,196 +30,245 @@ Secure, scalable, and production-ready backend platform for building, managing, 
 
 # 📌 Overview
 
-APIForge is a full-stack backend platform designed for building, securing, documenting, and managing RESTful APIs. The application provides secure authentication using JWT, role-based authorization, project management, endpoint management, execution tracking, analytics, and comprehensive API documentation through Swagger/OpenAPI.
+APIForge is a production-inspired REST API Management Platform built using **Spring Boot** that enables developers to organize, secure, execute, and monitor REST APIs through a centralized workspace.
 
-The project follows a clean layered architecture with Controller, Service, Repository, DTO, and Entity layers, ensuring maintainability, scalability, and separation of concerns. Docker support, environment-based configuration, and automated API documentation make the platform deployment-ready for modern backend environments.
+Unlike a traditional CRUD application, APIForge focuses on modern backend engineering practices including **JWT Authentication**, **Role-Based Authorization**, **Spring Security**, **Dockerized Deployment**, **Swagger/OpenAPI Documentation**, **Execution Tracking**, and **Project Analytics**.
+
+The platform allows developers to group APIs into projects, securely access protected resources, execute registered endpoints, monitor execution history, and analyze project-level API usage through a clean and scalable architecture.
 
 ---
 
 ## 📑 Table of Contents
 
-- 📌 Overview
-- 📸 Application Preview
-- ✨ Key Features
-- 🔐 JWT Authentication & Authorization
-- 📁 Project Management
-- 🌐 API Endpoint Management
-- 📊 Project Analytics
-- 📜 Execution History
-- 👥 Role-Based Access Control
-- 🏗️ System Architecture
-- ⚙️ Technology Stack
-- 🐳 Docker Support
-- 📖 Swagger Documentation
-- 🚀 Getting Started
-- 🧪 Testing
-- 📈 Future Roadmap
-- 👨‍💻 Author
+- [📌 Overview](#-overview)
+- [📸 Application Preview](#-application-preview)
+- [✨ Key Features](#-key-features)
+- [🔐 Authentication & Authorization](#-authentication--authorization)
+- [📁 Project Management](#-project-management)
+- [🌐 API Endpoint Management](#-api-endpoint-management)
+- [📊 Project Analytics](#-project-analytics)
+- [📜 API Execution History](#-api-execution-history)
+- [📖 Swagger Documentation](#-swagger-documentation)
+- [🏗️ System Architecture](#️-system-architecture)
+- [📂 Project Structure](#-project-structure)
+- [⚙️ Technology Stack](#️-technology-stack)
+- [🐳 Docker Support](#-docker-support)
+- [🚀 Getting Started](#-getting-started)
+- [🧪 Testing](#-testing)
+- [📈 Future Roadmap](#-future-roadmap)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
+- [👨‍💻 Author](#-author)
 
----
+  
 # 📸 Application Preview
 
-### Swagger Documentation
+### Interactive Swagger Documentation
 
-APIForge provides interactive API documentation powered by Swagger/OpenAPI, allowing developers to explore, authenticate, and test every endpoint directly from the browser.
+APIForge provides a fully interactive Swagger/OpenAPI interface that enables developers to explore, authenticate, and test REST APIs directly from the browser.
 
 <p align="center">
-<img src="C:\Users\reshu\OneDrive\Desktop\PROJECTS\apiforge-image\MainPage.png"/>
+<img src="assets/swagger-home.png" width="1000"/>
 </p>
 
 ---
 
-### Available REST Endpoints
+# 🔐 Authentication & Authorization
 
-The platform exposes REST APIs for authentication, project management, endpoint management, analytics, execution history, and administrative operations.
+APIForge secures every protected endpoint using **JWT Authentication** and **Spring Security**.
 
-<p align="center">
-<img src="C:\Users\reshu\OneDrive\Desktop\PROJECTS\apiforge-image\Endpoints.png"/>
-</p>
+After successful authentication, the server generates a signed JWT access token that is used as a **Bearer Token** to access secured APIs.
 
----
-# 🔐 Authentication Flow
+### User Login & JWT Token Generation
 
-APIForge secures every protected API using JWT Authentication and Spring Security.
-
-New users can register, authenticate using their credentials, receive a JWT access token, and use the token to access protected resources through Swagger or any REST client.
-
----
-
-### User Registration
-
-The registration endpoint creates a new user account after validating request data and securely encrypting the password using BCrypt before storing it in the database.
+The login endpoint authenticates users using their email and password before returning a signed JWT access token.
 
 <p align="center">
-<img src="assets/register.png" width="1000"/>
+<img src="assets/login-token.png" width="1000"/>
 </p>
 
 ---
 
-### User Login
+### Bearer Token Authorization
 
-Registered users authenticate using their email and password. After successful authentication, the server generates a signed JWT access token that is returned to the client.
+Swagger UI allows developers to authorize once using the generated JWT token and securely test every protected API without additional configuration.
 
 <p align="center">
-<img src=<img width="1265" height="921" alt="login with token" src="https://github.com/user-attachments/assets/845951d0-1d8f-446a-9620-89db919e56c9" />
-/>
+<img src="assets/authorization.png" width="900"/>
 </p>
 
 ---
 
-### JWT Authentication
+# 📁 Project Management
 
-The generated JWT token can be supplied as a Bearer Token through Swagger's **Authorize** button to securely access protected REST APIs.
+APIForge organizes REST APIs into independent projects, allowing developers to manage multiple applications from a single platform.
+
+Each project supports:
+
+- ✅ Create Projects
+- ✅ Update Projects
+- ✅ Delete Projects
+- ✅ Search Projects
+- ✅ Pagination Support
+- ✅ Project-specific Analytics
+- ✅ Execution History
 
 <p align="center">
-<img src="C:\Users\reshu\OneDrive\Desktop\PROJECTS\apiforge-image\Authorization.png""/>
+<img src="assets/projects.png" width="1000"/>
 </p>
 
 ---
+# 🌐 API Endpoint Management
+
+APIForge provides a centralized workspace for organizing, managing, and executing REST API endpoints within individual projects.
+
+Instead of maintaining APIs across multiple tools, developers can register endpoints, execute requests, and monitor activity from a single platform.
+
+### Supported Operations
+
+- ➕ Register API Endpoints
+- ✏️ Update Existing Endpoints
+- ❌ Delete Endpoints
+- ▶ Execute APIs
+- 📜 View Execution History
+- 📊 Analyze Endpoint Activity
+
+<p align="center">
+<img src="assets/endpoints.png" width="1000"/>
+</p>
+
+---
+
 # 📊 Project Analytics
 
-APIForge provides built-in analytics that help developers understand project activity and API usage without manually inspecting the database.
+APIForge goes beyond traditional CRUD functionality by providing project-level analytics that help developers understand API usage and execution patterns.
 
-For every project, the platform generates meaningful insights based on stored execution records, enabling developers to monitor API usage and application behavior through dedicated analytics endpoints.
+The analytics engine generates meaningful insights for every project using stored execution data, allowing developers to monitor application behavior without manually querying the database.
 
-### Analytics Features
+### Analytics Overview
 
-- 📈 Project-level analytics
-- 📊 API execution statistics
-- 📋 Total registered endpoints
-- ⚡ Execution activity monitoring
-- 📜 Historical execution insights
+- 📈 Project Statistics
+- 📊 API Execution Metrics
+- 📋 Registered Endpoint Count
+- ⚡ API Usage Monitoring
+- 📉 Project Activity Insights
 
 <p align="center">
-    <img src="C:\Users\reshu\OneDrive\Desktop\PROJECTS\apiforge-image\Project Analytics.png"/>
+<img src="assets/project-analytics.png" width="1000"/>
 </p>
 
 ---
 
-# ✨ Features
+# 📜 API Execution History
 
-### 🔐 Authentication & Security
+Every API execution performed within APIForge is automatically recorded, providing complete traceability and historical insights.
 
-- JWT-based Authentication
-- Role-Based Authorization (ADMIN / USER)
-- Spring Security Integration
-- BCrypt Password Encryption
-- Secure API Access Control
-- Stateless Authentication
+Execution history enables developers to review previous API calls, inspect execution results, and analyze endpoint activity over time.
+
+### Execution History Includes
+
+- ⏱ Execution Timestamp
+- 🌐 Executed Endpoint
+- 📡 HTTP Method
+- 📄 API Description
+- 📊 Execution Records
+
+<p align="center">
+<img src="assets/execution-history.png" width="1000"/>
+</p>
+
+---
+# ✨ Key Features
+
+APIForge is designed as a production-oriented backend platform rather than a traditional CRUD application.
+
+### Core Features
+
+- 🔐 JWT Authentication
+- 👥 Role-Based Authorization
+- 🛡 Spring Security Integration
+- 📖 Interactive Swagger/OpenAPI Documentation
+- 📁 Project Management
+- 🌐 REST API Endpoint Management
+- ▶ API Execution Engine
+- 📊 Project Analytics
+- 📜 Execution History
+- 🔍 Project Search
+- 📄 Pagination Support
+- ⚠ Global Exception Handling
+- 📦 DTO-Based Request & Response Layer
+- 🐳 Dockerized Deployment
+- ⚙ Environment-Based Configuration
+- 🧪 Unit Testing with JUnit
+- 🏗 Layered Architecture
 
 ---
 
-### 📡 API Management
+# ⚙️ Technology Stack
 
-- Project Management APIs
-- API Endpoint Management
-- API Execution Engine
-- Execution History Tracking
-- API Analytics Dashboard
-- Administrative APIs
+## Backend
+
+- Java 21
+- Spring Boot 3.5.x
+- Spring Security
+- Spring Data JPA
+- JWT Authentication
+- Maven
+- MySQL
+- Hibernate
+
+## API Documentation
+
+- Swagger UI
+- OpenAPI 3
+
+## DevOps
+
+- Docker
+- Docker Compose
+
+## Testing
+
+- JUnit 5
+
+## Tools
+
+- IntelliJ IDEA
+- Git
+- GitHub
+- Postman
 
 ---
 
-### ⚙️ Backend Engineering
+# 🏗️ System Architecture
 
-- RESTful API Design
-- Layered Architecture
-- DTO Pattern
-- Repository Pattern
-- Global Exception Handling
-- Request Validation
-- Pagination Support
-- Standard HTTP Status Codes
-- Environment-based Configuration
-
----
-
-### 📦 Production Features
-
-- Swagger / OpenAPI Documentation
-- Docker Support
-- Docker Compose Configuration
-- MySQL Database
-- Maven Build System
-- Unit Testing
-- Containerized using Docker
-
-  # 🏗️ System Architecture
-
-APIForge follows a production-oriented layered architecture that promotes separation of concerns, maintainability, scalability, and secure API development.
+APIForge follows a layered architecture that separates business logic, security, persistence, and API communication into independent layers for improved maintainability and scalability.
 
 ```text
-                         Client Applications
-                    (React / Postman / Swagger)
-                               │
-                               ▼
-                    Spring Security + JWT Filter
-                               │
-                               ▼
-                      REST Controllers Layer
-                               │
-                               ▼
-                      Business Service Layer
-                               │
-                               ▼
-                       Repository Layer (JPA)
-                               │
-                               ▼
-                           MySQL Database
+                    Client Applications
+                            │
+                            ▼
+                  Swagger UI / REST Client
+                            │
+                            ▼
+                  Spring Security (JWT)
+                            │
+                            ▼
+                    REST Controllers
+                            │
+                            ▼
+                     Service Layer
+                            │
+                            ▼
+                  Repository Layer (JPA)
+                            │
+                            ▼
+                          MySQL
 ```
 
-### Architectural Highlights
+---
 
-- Layered Architecture
-- DTO-based Request & Response Models
-- Repository Pattern
-- Service-Oriented Business Logic
-- JWT Authentication Pipeline
-- Role-Based Authorization
-- Global Exception Handling
-- Environment-based Configuration
-
-  # 📂 Project Structure
+# 📂 Project Structure
 
 ```text
 APIForge
@@ -234,121 +288,52 @@ APIForge
 │   │   │       └── ApiforgeApplication
 │   │   │
 │   │   └── resources
-│   │       ├── static
-│   │       ├── templates
 │   │       └── application.properties
 │   │
 │   └── test
 │       └── java
 │
+├── assets
 ├── Dockerfile
 ├── compose.yaml
-├── .env.example
 ├── pom.xml
 └── README.md
 ```
-# 📡 API Modules
-
-APIForge provides multiple REST API modules for secure application management and API lifecycle management.
-
-| Module | Description |
-|---------|-------------|
-| 🔐 Authentication | User Registration, Login & JWT Authentication |
-| 👤 User Management | User profile and account management |
-| 📁 Project Management | Create, update, delete and manage projects |
-| 🌐 API Endpoint Management | Manage REST API endpoints under projects |
-| ▶ API Execution | Execute stored API endpoints |
-| 📜 Execution History | Track previous API executions |
-| 📊 Analytics Dashboard | Repository statistics and usage insights |
-| 👑 Admin Dashboard | Administrative operations and monitoring |
-
----
-# 🔐 Authentication & Authorization
-
-APIForge secures every protected endpoint using JWT Authentication and Spring Security.
-
-### Security Workflow
-
-```text
-User Login
-     │
-     ▼
-Authenticate Credentials
-     │
-Generate JWT Token
-     │
-Client stores JWT
-     │
-Bearer Token
-     │
-JWT Authentication Filter
-     │
-Spring Security
-     │
-Role-Based Authorization
-     │
-Protected REST APIs
-```
-
-### Security Features
-
-- JWT Authentication
-- Role-Based Authorization
-- Spring Security
-- BCrypt Password Encryption
-- Stateless Authentication
-- Protected REST Endpoints
 
 ---
 # 🐳 Docker Support
 
-APIForge is fully containerized for simplified deployment.
+APIForge is fully containerized, making it easy to build, deploy, and run consistently across different environments.
 
-Included Docker resources:
+### Included Docker Resources
 
 - Dockerfile
 - Docker Compose
-- Environment Configuration
-- Production-ready Build
+- Environment-Based Configuration
+- Production-Oriented Build Setup
 
-Run using Docker:
+Run the application using Docker:
 
 ```bash
 docker compose up --build
 ```
 
 ---
-# ⚙️ Technology Stack
 
-## Backend
+# 📖 Swagger Documentation
 
-- Java 21
-- Spring Boot
-- Spring Security
-- Spring Data JPA
-- Hibernate
-- JWT
-- Maven
+APIForge integrates Swagger/OpenAPI to provide interactive REST API documentation.
 
-## Database
+Developers can explore, authenticate, and test every endpoint directly from the browser without additional tools.
 
-- MySQL
+After running the application, Swagger is available at:
 
-## Documentation
-
-- Swagger / OpenAPI
-
-## DevOps
-
-- Docker
-- Docker Compose
-
-## Testing
-
-- JUnit
-- Spring Boot Test
+```text
+http://localhost:8080/swagger-ui/index.html
+```
 
 ---
+
 # 🚀 Getting Started
 
 ## Clone Repository
@@ -357,7 +342,11 @@ docker compose up --build
 git clone https://github.com/ReshuKumari05/APIForge.git
 ```
 
+---
+
 ## Configure Environment
+
+Update your database and security configuration before starting the application.
 
 ```properties
 DB_URL=
@@ -366,23 +355,21 @@ DB_PASSWORD=
 JWT_SECRET=
 ```
 
-or simply copy
+You can also duplicate the provided configuration template.
 
 ```text
 .env.example
 ```
 
-to
+↓
 
 ```text
 .env
 ```
 
-and update the values.
-
 ---
 
-## Build Project
+## Build Application
 
 ```bash
 mvn clean install
@@ -398,53 +385,64 @@ mvn spring-boot:run
 
 ---
 
-## Swagger Documentation
-
-After starting the application:
-
-```text
-http://localhost:8080/swagger-ui/index.html
-```
-
----
 # 🧪 Testing
 
-APIForge includes testing support for validating API functionality and backend components.
+APIForge includes testing support for validating backend functionality.
 
-### Testing Stack
+### Testing Tools
 
 - Spring Boot Test
-- JUnit
-- HTTP Request Collection (`test.http`)
-- Swagger UI for Interactive API Testing
-
-API endpoints can be tested through:
-
+- JUnit 5
 - Swagger UI
 - Postman
-- IntelliJ HTTP Client
+- IntelliJ HTTP Client (`test.http`)
 
-  # 📈 Future Improvements
+---
+
+# 📈 Future Roadmap
+
+Planned enhancements include:
 
 - Refresh Token Authentication
 - Email Verification
-- Password Reset Workflow
-- API Rate Limiting
+- Password Reset
 - Redis Caching
+- API Rate Limiting
 - CI/CD Pipeline
 - Kubernetes Deployment
 - Monitoring & Logging
-- Multi-Tenant API Management
-- API 
+- Multi-Tenant Architecture
+- API Versioning
+- API Performance Metrics
+
+---
+
+# 🤝 Contributing
+
+Contributions, suggestions, and improvements are welcome.
+
+If you'd like to improve APIForge, feel free to fork the repository, create a feature branch, and submit a Pull Request.
+
+---
+
+# 📄 License
+
+This project is licensed under the MIT License.
+
+See the `LICENSE` file for more information.
+
+---
 
 # 👨‍💻 Author
 
-**Reshu Kumari**
+## Reshu Kumari
 
-Backend Developer specializing in Java, Spring Boot, REST APIs, and secure backend systems.
+**Backend Developer | Java & Spring Boot Enthusiast**
 
-- GitHub: https://github.com/ReshuKumari05
-- LinkedIn: https://www.linkedin.com/in/reshu-kumari-7b72b0292/
+Passionate about building secure, scalable, and production-ready backend applications using Java, Spring Boot, REST APIs, JWT Authentication, Docker, and modern software engineering practices.
+
+- **GitHub:** https://github.com/ReshuKumari05
+- **LinkedIn:** https://www.linkedin.com/in/reshu-kumari-7b72b0292/
 
 ---
 
