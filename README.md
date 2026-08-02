@@ -50,6 +50,85 @@ The project follows a clean layered architecture with Controller, Service, Repos
 - 👨‍💻 Author
 
 ---
+# 📸 Application Preview
+
+### Swagger Documentation
+
+APIForge provides interactive API documentation powered by Swagger/OpenAPI, allowing developers to explore, authenticate, and test every endpoint directly from the browser.
+
+<p align="center">
+<img src="C:\Users\reshu\OneDrive\Desktop\PROJECTS\apiforge-image\MainPage.png"/>
+</p>
+
+---
+
+### Available REST Endpoints
+
+The platform exposes REST APIs for authentication, project management, endpoint management, analytics, execution history, and administrative operations.
+
+<p align="center">
+<img src="C:\Users\reshu\OneDrive\Desktop\PROJECTS\apiforge-image\Endpoints.png"/>
+</p>
+
+---
+# 🔐 Authentication Flow
+
+APIForge secures every protected API using JWT Authentication and Spring Security.
+
+New users can register, authenticate using their credentials, receive a JWT access token, and use the token to access protected resources through Swagger or any REST client.
+
+---
+
+### User Registration
+
+The registration endpoint creates a new user account after validating request data and securely encrypting the password using BCrypt before storing it in the database.
+
+<p align="center">
+<img src="assets/register.png" width="1000"/>
+</p>
+
+---
+
+### User Login
+
+Registered users authenticate using their email and password. After successful authentication, the server generates a signed JWT access token that is returned to the client.
+
+<p align="center">
+<img src=<img width="1265" height="921" alt="login with token" src="https://github.com/user-attachments/assets/845951d0-1d8f-446a-9620-89db919e56c9" />
+/>
+</p>
+
+---
+
+### JWT Authentication
+
+The generated JWT token can be supplied as a Bearer Token through Swagger's **Authorize** button to securely access protected REST APIs.
+
+<p align="center">
+<img src="C:\Users\reshu\OneDrive\Desktop\PROJECTS\apiforge-image\Authorization.png""/>
+</p>
+
+---
+# 📊 Project Analytics
+
+APIForge provides built-in analytics that help developers understand project activity and API usage without manually inspecting the database.
+
+For every project, the platform generates meaningful insights based on stored execution records, enabling developers to monitor API usage and application behavior through dedicated analytics endpoints.
+
+### Analytics Features
+
+- 📈 Project-level analytics
+- 📊 API execution statistics
+- 📋 Total registered endpoints
+- ⚡ Execution activity monitoring
+- 📜 Historical execution insights
+
+<p align="center">
+    <img src="C:\Users\reshu\OneDrive\Desktop\PROJECTS\apiforge-image\Project Analytics.png"/>
+</p>
+
+---
+
 # ✨ Features
 
 ### 🔐 Authentication & Security
