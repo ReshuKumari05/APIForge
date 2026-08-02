@@ -33,20 +33,22 @@ The project follows a clean layered architecture with Controller, Service, Repos
 
 ## 📑 Table of Contents
 
+- 📌 Overview
 - 📸 Application Preview
-- ✨ Features
-- 🔐 Authentication & Authorization
-- 📡 API Modules
-- 📊 Analytics Dashboard
-- 🏗 System Architecture
-- 📂 Project Structure
-- ⚙ Technology Stack
+- ✨ Key Features
+- 🔐 JWT Authentication & Authorization
+- 📁 Project Management
+- 🌐 API Endpoint Management
+- 📊 Project Analytics
+- 📜 Execution History
+- 👥 Role-Based Access Control
+- 🏗️ System Architecture
+- ⚙️ Technology Stack
 - 🐳 Docker Support
 - 📖 Swagger Documentation
 - 🚀 Getting Started
-- 🔧 Environment Configuration
 - 🧪 Testing
-- 📈 Future Improvements
+- 📈 Future Roadmap
 - 👨‍💻 Author
 
 ---
