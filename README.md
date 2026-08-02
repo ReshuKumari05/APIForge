@@ -173,9 +173,8 @@ Execution history enables developers to review previous API calls, inspect execu
 - 📄 API Description
 - 📊 Execution Records
 
-<p align="center">
-<img src="assets/execution-history.png" width="1000"/>
-</p>
+
+
 
 ---
 # ✨ Key Features
