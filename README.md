@@ -68,7 +68,7 @@ The platform allows developers to group APIs into projects, securely access prot
 APIForge provides a fully interactive Swagger/OpenAPI interface that enables developers to explore, authenticate, and test REST APIs directly from the browser.
 
 <p align="center">
-<img src="assets/swagger-home.png" width="1000"/>
+<img src="assets/MainPage.png" width="1000"/>
 </p>
 
 ---
@@ -84,7 +84,7 @@ After successful authentication, the server generates a signed JWT access token 
 The login endpoint authenticates users using their email and password before returning a signed JWT access token.
 
 <p align="center">
-<img src="assets/login-token.png" width="1000"/>
+<img src="assets/login with token.png" width="1000"/>
 </p>
 
 ---
@@ -94,7 +94,7 @@ The login endpoint authenticates users using their email and password before ret
 Swagger UI allows developers to authorize once using the generated JWT token and securely test every protected API without additional configuration.
 
 <p align="center">
-<img src="assets/authorization.png" width="900"/>
+<img src="assets/Authorization.png" width="900"/>
 </p>
 
 ---
@@ -114,7 +114,7 @@ Each project supports:
 - ✅ Execution History
 
 <p align="center">
-<img src="assets/projects.png" width="1000"/>
+<img src="assets/Projects.png" width="1000"/>
 </p>
 
 ---
@@ -134,7 +134,7 @@ Instead of maintaining APIs across multiple tools, developers can register endpo
 - 📊 Analyze Endpoint Activity
 
 <p align="center">
-<img src="assets/endpoints.png" width="1000"/>
+<img src="assets/Endpoints.png" width="1000"/>
 </p>
 
 ---
@@ -154,7 +154,7 @@ The analytics engine generates meaningful insights for every project using store
 - 📉 Project Activity Insights
 
 <p align="center">
-<img src="assets/project-analytics.png" width="1000"/>
+<img src="assets/Project Analytics.png" width="1000"/>
 </p>
 
 ---
